@@ -8,6 +8,7 @@ import googleMeetIcon from "../../assets/google-meet.png";
 const Keyboard = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [showBtns, setShowBtns] = useState(false);
+    const [now, setNow] = useState(null);
     useEffect(() => {
         if (phoneNumber.length === 0) {
             setShowBtns(false);
@@ -15,11 +16,15 @@ const Keyboard = () => {
             setShowBtns(true);
         }
     });
-    const addNumber = (number) => {
-        setPhoneNumber(phoneNumber + number);
-    };
-    const addLetter = (letter) => {
-        setPhoneNumber(phoneNumber + letter);
+    const addChar = (box) => {
+        const { letters, number } = box;
+        const later = new Date().getTime();
+        const difference = later - now;
+        if (difference >= 300) {
+            setPhoneNumber(phoneNumber + letters);
+        } else {
+            setPhoneNumber(phoneNumber + number);
+        }
     };
     const deleteLastNumber = () => {
         setPhoneNumber(phoneNumber.slice(0, phoneNumber.length - 1));
@@ -33,7 +38,8 @@ const Keyboard = () => {
                         const { number, letters } = box;
                         return (
                             <div
-                                onClick={() => addNumber(number)}
+                                onMouseDown={() => setNow(new Date().getTime())}
+                                onMouseUp={() => addChar(box)}
                                 key={nanoid()}
                                 className="box"
                             >
@@ -47,7 +53,7 @@ const Keyboard = () => {
                     <a
                         className={showBtns ? "show" : ""}
                         id="googleMeet-btn"
-                        href="#"
+                        href="https://meet.google.com"
                     >
                         <img src={googleMeetIcon} alt="google-meet-icon" />
                     </a>
@@ -58,13 +64,13 @@ const Keyboard = () => {
                     >
                         <FaPhoneAlt />
                     </a>
-                    <a
+                    <button
                         className={showBtns ? "show" : ""}
                         id="deleteNumber-btn"
                         onClick={deleteLastNumber}
                     >
                         <TiTimes />
-                    </a>
+                    </button>
                 </section>
             </div>
         </div>

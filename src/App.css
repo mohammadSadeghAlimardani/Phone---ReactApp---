@@ -118,7 +118,7 @@
     border-radius: 50%;
 }
 
-.keyboard .keyboard-center .contact-btns a#deleteNumber-btn {
+.keyboard .keyboard-center .contact-btns button#deleteNumber-btn {
     width: 3rem;
     height: 2.5rem;
     cursor: pointer;
@@ -130,11 +130,11 @@
 }
 
 .keyboard .keyboard-center .contact-btns a#googleMeet-btn,
-a#deleteNumber-btn {
+button#deleteNumber-btn {
     transition: all 0.3s;
     transform: scale(0);
 }
 .keyboard .keyboard-center .contact-btns a#googleMeet-btn.show,
-a#deleteNumber-btn.show {
+button#deleteNumber-btn.show {
     transform: scale(1);
 }
