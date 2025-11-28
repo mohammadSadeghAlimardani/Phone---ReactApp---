@@ -3,7 +3,7 @@ import People from "./components/People/People";
 import Keyboard from "./components/Keyboard/Keyboard";
 import { useEffect, useState } from "react";
 import { links } from "./data";
-const url = "https://api.jsonbin.io/v3/b/68965db4203a8b52b5e21b0c";
+const url = https://api.npoint.io/7d8d81b6240264558517";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +17,6 @@ const App = () => {
         try {
             const response = await fetch(url);
             let data = await response.json();
-            data = data.record;
             setContacts(data);
         } catch (error) {
             setIsError(true);
