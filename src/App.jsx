@@ -3,7 +3,7 @@ import People from "./components/People/People";
 import Keyboard from "./components/Keyboard/Keyboard";
 import { useEffect, useState } from "react";
 import { links } from "./data";
-const url = "https://api.npoint.io/7d8d81b6240264558517";
+const url = "https://api.npoint.io/1365d69fbba2d1a534fe";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
